@@ -9,103 +9,18 @@ using System.Threading.Tasks;
 using System.Configuration;
 using System.Windows.Forms;
 using Capturer.Processor;
-using static Capturer.Processor.ExcelProcessor;
 using System.IO;
 
 namespace Capturer
 {
-    public partial class MainForm : Form
+    public partial class ExcelPadFrom : Form
     {
-        private readonly VideoCapturerProcessor _videoCapturerProcessor = null;
         private ExcelProcessor _excelProcessor = null;
+        private CapturerForm _capturer = null;
 
-        public MainForm()
+        public ExcelPadFrom()
         {
-            this._videoCapturerProcessor = new VideoCapturerProcessor();
-
             InitializeComponent();
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            this.cbxChooseDevice.Items.AddRange(this._videoCapturerProcessor.DeviceNames);
-            this.cbxChooseDevice.SelectedIndex = 0;
-        }
-
-        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            this.Close();
-        }
-
-        private void cbxChooseDevice_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            int deviceIndex = (sender as ComboBox).SelectedIndex;
-            IList<int[]> resolutions = new List<int[]>();
-
-            try
-            {
-                this._videoCapturerProcessor.ChooseDevice(deviceIndex);
-                resolutions = this._videoCapturerProcessor.GetAvailableResolution().OrderBy(x => x[1]).ToList();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-            foreach (int[] item in resolutions)
-            {
-                this.cbxChooseResolution.Items.Add(new ComboBoxItem($"{item[1]} x {item[2]}", item[0].ToString()));
-            }
-
-            this.cbxChooseResolution.SelectedIndex = 2;
-        }
-
-        private void cbxChooseResolution_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            object capabilitiesIndex = ((sender as ComboBox).SelectedItem as ComboBoxItem).Value;
-            try
-            {
-                this._videoCapturerProcessor.ChooseCapabilities(Convert.ToInt32(capabilitiesIndex));
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void btnBeginOrCancel_Click(object sender, EventArgs e)
-        {
-            Button btn = sender as Button;
-
-            if (btn.Text == "打开摄像头")
-            {
-                btn.Enabled = false;
-                this.EnableController(false);
-
-                try
-                {
-                    this.videoSourcePlayer1.VideoSource = this._videoCapturerProcessor.OpenCapturer();
-                    this.videoSourcePlayer1.Start();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                    this.Close();
-                }
-
-                btn.Text = "关闭摄像头";
-                btn.Enabled = true;
-            }
-            else
-            {
-                btn.Enabled = false;
-
-                this.Close();
-
-                btn.Text = "打开摄像头";
-                btn.Enabled = true;
-                this.EnableController(true);
-            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -206,7 +121,7 @@ namespace Capturer
             }
         }
 
-        private void btnChoosebtnChoosePicture_Click(object sender, EventArgs e)
+        private void btnChoosePicture_Click(object sender, EventArgs e)
         {
             if (dataGridView1.CurrentCell == null)
             {
@@ -260,7 +175,13 @@ namespace Capturer
 
         private void ctxGridCellMenuBtnSnapshot_Click(object sender, EventArgs e)
         {
-            Bitmap bitmap = videoSourcePlayer1.GetCurrentVideoFrame();
+            if(this._capturer == null)
+            {
+                MessageBox.Show("请确认是否已打开视频设备");
+                return;
+            }
+
+            Bitmap bitmap = _capturer.videoSourcePlayer1.GetCurrentVideoFrame();
             if (bitmap == null)
             {
                 MessageBox.Show("请确认是否已打开视频设备");
@@ -365,7 +286,7 @@ namespace Capturer
                 txtFIlePath.Text = fileChooseExcel.FileName;
 
                 IList<object[]> data = null;
-                IList<PictureInfo> pictureInfos = null;
+                IList<ExcelProcessor.PictureInfo> pictureInfos = null;
                 try
                 {
                     this._excelProcessor = new ExcelProcessor(fileChooseExcel.FileName);
@@ -445,20 +366,11 @@ namespace Capturer
             }
         }
 
-        private void Close()
+        private void btnOpenCaptuer_Click(object sender, EventArgs e)
         {
-            if (videoSourcePlayer1.VideoSource != null)
-            {
-                videoSourcePlayer1.SignalToStop();
-                videoSourcePlayer1.WaitForStop();
-                videoSourcePlayer1.VideoSource = null;
-            }
-        }
-
-        private void EnableController(bool enable)
-        {
-            cbxChooseDevice.Enabled = enable;
-            cbxChooseResolution.Enabled = enable;
+            this._capturer = new CapturerForm();
+            this._capturer.StartPosition = FormStartPosition.CenterScreen;
+            this._capturer.Show(this);
         }
     }
 }
