@@ -175,7 +175,7 @@ namespace Capturer
 
         private void ctxGridCellMenuBtnSnapshot_Click(object sender, EventArgs e)
         {
-            if(this._capturer == null)
+            if (this._capturer == null)
             {
                 MessageBox.Show("请确认是否已打开视频设备");
                 return;
@@ -318,7 +318,7 @@ namespace Capturer
                 {
                     foreach (object item in data[0])
                     {
-                        string text = item.ToString();
+                        string text = item == null ? string.Empty : item.ToString();
                         if (ConfigurationManager.AppSettings["imageColumnsName"].Split('|').Contains(text))
                         {
                             DataGridViewImageColumn col = new DataGridViewImageColumn();

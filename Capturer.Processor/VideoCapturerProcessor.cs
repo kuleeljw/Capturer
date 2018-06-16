@@ -57,6 +57,10 @@ namespace Capturer.Processor
 
         public void ChooseDevice(int index)
         {
+            if(this.DeviceCount < 1)
+            {
+                throw new Exception("没有设备");
+            }
             this._currentVideoDevice = new VideoCaptureDevice(this._videoDevices[index].MonikerString);
             this._videoCapabilities = _currentVideoDevice.VideoCapabilities;
         }

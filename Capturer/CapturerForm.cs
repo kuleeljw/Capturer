@@ -26,6 +26,10 @@ namespace Capturer
         {
             this.cbxChooseDevice.Items.AddRange(this._videoCapturerProcessor.DeviceNames);
             this.cbxChooseDevice.SelectedIndex = 0;
+            if(this._videoCapturerProcessor.DeviceCount < 1)
+            {
+                btnBeginOrCancel.Enabled = false;
+            }
         }
 
         private void Capturer_FormClosed(object sender, FormClosedEventArgs e)
@@ -35,6 +39,10 @@ namespace Capturer
 
         private void cbxChooseDevice_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (this._videoCapturerProcessor.DeviceCount < 1)
+            {
+                return;
+            }
             int deviceIndex = (sender as ComboBox).SelectedIndex;
             IList<int[]> resolutions = new List<int[]>();
 
@@ -46,6 +54,7 @@ namespace Capturer
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                return;
             }
 
             foreach (int[] item in resolutions)
@@ -119,6 +128,6 @@ namespace Capturer
             cbxChooseDevice.Enabled = enable;
             cbxChooseResolution.Enabled = enable;
         }
-       
+
     }
 }
