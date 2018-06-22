@@ -392,7 +392,7 @@ namespace Capturer
             TabPage result = null;
             foreach (TabPage page in _tabControl1.TabPages)
             {
-                TabPageTag tag = page.Tag  as TabPageTag;
+                TabPageTag tag = page.Tag as TabPageTag;
                 if (tag.FileName == fileName)
                 {
                     result = page;
@@ -447,7 +447,7 @@ namespace Capturer
             {
                 foreach (object item in data[0])
                 {
-                    string text = item.ToString();
+                    string text = item == null ? string.Empty : item.ToString();
                     if (ConfigurationManager.AppSettings["imageColumnsName"].Split('|').Contains(text))
                     {
                         DataGridViewImageColumn col = new DataGridViewImageColumn();
