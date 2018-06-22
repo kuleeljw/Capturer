@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.fileChoosePicture = new System.Windows.Forms.OpenFileDialog();
             this.ctxGridCellMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ctxGridCellMenuBtnSnapshot = new System.Windows.Forms.ToolStripMenuItem();
@@ -37,23 +36,22 @@
             this.fileChooseExcel = new System.Windows.Forms.OpenFileDialog();
             this.tblPnlExcel = new System.Windows.Forms.TableLayoutPanel();
             this.pnlExcellContoller = new System.Windows.Forms.Panel();
+            this.btnSaveAll = new System.Windows.Forms.Button();
+            this.cbxFIlePath = new System.Windows.Forms.ComboBox();
             this.btnOpenCaptuer = new System.Windows.Forms.Button();
             this.btnSaveAs = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnOpenExcelFile = new System.Windows.Forms.Button();
-            this.txtFIlePath = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnAddRow = new System.Windows.Forms.Button();
             this.btnCurrentDatetime = new System.Windows.Forms.Button();
             this.btnRemoveRow = new System.Windows.Forms.Button();
             this.btnChoosePicture = new System.Windows.Forms.Button();
             this.btnSnapshot = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.ctxGridCellMenu.SuspendLayout();
             this.tblPnlExcel.SuspendLayout();
             this.pnlExcellContoller.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // ctxGridCellMenu
@@ -86,7 +84,6 @@
             this.tblPnlExcel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblPnlExcel.Controls.Add(this.pnlExcellContoller, 0, 0);
             this.tblPnlExcel.Controls.Add(this.panel1, 0, 1);
-            this.tblPnlExcel.Controls.Add(this.dataGridView1, 0, 2);
             this.tblPnlExcel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tblPnlExcel.Location = new System.Drawing.Point(0, 0);
             this.tblPnlExcel.Name = "tblPnlExcel";
@@ -99,11 +96,12 @@
             // 
             // pnlExcellContoller
             // 
+            this.pnlExcellContoller.Controls.Add(this.btnSaveAll);
+            this.pnlExcellContoller.Controls.Add(this.cbxFIlePath);
             this.pnlExcellContoller.Controls.Add(this.btnOpenCaptuer);
             this.pnlExcellContoller.Controls.Add(this.btnSaveAs);
             this.pnlExcellContoller.Controls.Add(this.btnSave);
             this.pnlExcellContoller.Controls.Add(this.btnOpenExcelFile);
-            this.pnlExcellContoller.Controls.Add(this.txtFIlePath);
             this.pnlExcellContoller.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlExcellContoller.Location = new System.Drawing.Point(1, 1);
             this.pnlExcellContoller.Margin = new System.Windows.Forms.Padding(0);
@@ -111,12 +109,32 @@
             this.pnlExcellContoller.Size = new System.Drawing.Size(1438, 50);
             this.pnlExcellContoller.TabIndex = 2;
             // 
+            // btnSaveAll
+            // 
+            this.btnSaveAll.Location = new System.Drawing.Point(572, 15);
+            this.btnSaveAll.Name = "btnSaveAll";
+            this.btnSaveAll.Size = new System.Drawing.Size(84, 25);
+            this.btnSaveAll.TabIndex = 12;
+            this.btnSaveAll.Text = "全部保存";
+            this.btnSaveAll.UseVisualStyleBackColor = true;
+            this.btnSaveAll.Click += new System.EventHandler(this.btnSaveAll_Click);
+            // 
+            // cbxFIlePath
+            // 
+            this.cbxFIlePath.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxFIlePath.FormattingEnabled = true;
+            this.cbxFIlePath.Location = new System.Drawing.Point(3, 15);
+            this.cbxFIlePath.Name = "cbxFIlePath";
+            this.cbxFIlePath.Size = new System.Drawing.Size(409, 23);
+            this.cbxFIlePath.TabIndex = 11;
+            this.cbxFIlePath.SelectedIndexChanged += new System.EventHandler(this.cbxFIlePath_SelectedIndexChanged);
+            // 
             // btnOpenCaptuer
             // 
             this.btnOpenCaptuer.BackColor = System.Drawing.Color.Violet;
             this.btnOpenCaptuer.Font = new System.Drawing.Font("幼圆", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnOpenCaptuer.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnOpenCaptuer.Location = new System.Drawing.Point(684, 3);
+            this.btnOpenCaptuer.Location = new System.Drawing.Point(743, 2);
             this.btnOpenCaptuer.Name = "btnOpenCaptuer";
             this.btnOpenCaptuer.Size = new System.Drawing.Size(120, 45);
             this.btnOpenCaptuer.TabIndex = 10;
@@ -126,7 +144,7 @@
             // 
             // btnSaveAs
             // 
-            this.btnSaveAs.Location = new System.Drawing.Point(572, 15);
+            this.btnSaveAs.Location = new System.Drawing.Point(662, 15);
             this.btnSaveAs.Name = "btnSaveAs";
             this.btnSaveAs.Size = new System.Drawing.Size(71, 25);
             this.btnSaveAs.TabIndex = 9;
@@ -152,14 +170,6 @@
             this.btnOpenExcelFile.Text = "打开";
             this.btnOpenExcelFile.UseVisualStyleBackColor = true;
             this.btnOpenExcelFile.Click += new System.EventHandler(this.btnOpenExcelFile_Click);
-            // 
-            // txtFIlePath
-            // 
-            this.txtFIlePath.Enabled = false;
-            this.txtFIlePath.Location = new System.Drawing.Point(4, 15);
-            this.txtFIlePath.Name = "txtFIlePath";
-            this.txtFIlePath.Size = new System.Drawing.Size(409, 25);
-            this.txtFIlePath.TabIndex = 6;
             // 
             // panel1
             // 
@@ -224,21 +234,6 @@
             this.btnSnapshot.UseVisualStyleBackColor = true;
             this.btnSnapshot.Click += new System.EventHandler(this.btnSnapshot_Click);
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.dataGridView1.Location = new System.Drawing.Point(4, 101);
-            this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.RowTemplate.Height = 100;
-            this.dataGridView1.Size = new System.Drawing.Size(1432, 609);
-            this.dataGridView1.TabIndex = 4;
-            this.dataGridView1.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDown);
-            this.dataGridView1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridView1_RowPostPaint);
-            // 
             // ExcelPadFrom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -247,12 +242,12 @@
             this.Controls.Add(this.tblPnlExcel);
             this.Name = "ExcelPadFrom";
             this.Text = "ExcelPad";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ExcelPadFrom_FormClosing);
+            this.Load += new System.EventHandler(this.ExcelPadFrom_Load);
             this.ctxGridCellMenu.ResumeLayout(false);
             this.tblPnlExcel.ResumeLayout(false);
             this.pnlExcellContoller.ResumeLayout(false);
-            this.pnlExcellContoller.PerformLayout();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -268,14 +263,14 @@
         private System.Windows.Forms.Button btnSaveAs;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnOpenExcelFile;
-        private System.Windows.Forms.TextBox txtFIlePath;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnAddRow;
         private System.Windows.Forms.Button btnCurrentDatetime;
         private System.Windows.Forms.Button btnRemoveRow;
         private System.Windows.Forms.Button btnChoosePicture;
         private System.Windows.Forms.Button btnSnapshot;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnOpenCaptuer;
+        private System.Windows.Forms.ComboBox cbxFIlePath;
+        private System.Windows.Forms.Button btnSaveAll;
     }
 }
