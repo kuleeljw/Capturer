@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExcelPadFrom));
             this.fileChoosePicture = new System.Windows.Forms.OpenFileDialog();
             this.ctxGridCellMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ctxGridCellMenuBtnSnapshot = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,6 +49,7 @@
             this.btnRemoveRow = new System.Windows.Forms.Button();
             this.btnChoosePicture = new System.Windows.Forms.Button();
             this.btnSnapshot = new System.Windows.Forms.Button();
+            this.btnPrint = new System.Windows.Forms.Button();
             this.ctxGridCellMenu.SuspendLayout();
             this.tblPnlExcel.SuspendLayout();
             this.pnlExcellContoller.SuspendLayout();
@@ -61,19 +63,19 @@
             this.ctxGridCellMenuBtnSnapshot,
             this.ctxGridCellMenuBtnChoose});
             this.ctxGridCellMenu.Name = "ctxGridCellMenu";
-            this.ctxGridCellMenu.Size = new System.Drawing.Size(139, 52);
+            this.ctxGridCellMenu.Size = new System.Drawing.Size(153, 60);
             // 
             // ctxGridCellMenuBtnSnapshot
             // 
             this.ctxGridCellMenuBtnSnapshot.Name = "ctxGridCellMenuBtnSnapshot";
-            this.ctxGridCellMenuBtnSnapshot.Size = new System.Drawing.Size(138, 24);
+            this.ctxGridCellMenuBtnSnapshot.Size = new System.Drawing.Size(152, 28);
             this.ctxGridCellMenuBtnSnapshot.Text = "拍照";
             this.ctxGridCellMenuBtnSnapshot.Click += new System.EventHandler(this.ctxGridCellMenuBtnSnapshot_Click);
             // 
             // ctxGridCellMenuBtnChoose
             // 
             this.ctxGridCellMenuBtnChoose.Name = "ctxGridCellMenuBtnChoose";
-            this.ctxGridCellMenuBtnChoose.Size = new System.Drawing.Size(138, 24);
+            this.ctxGridCellMenuBtnChoose.Size = new System.Drawing.Size(152, 28);
             this.ctxGridCellMenuBtnChoose.Text = "选择图片";
             this.ctxGridCellMenuBtnChoose.Click += new System.EventHandler(this.ctxGridCellMenuBtnChoose_Click);
             // 
@@ -86,16 +88,18 @@
             this.tblPnlExcel.Controls.Add(this.panel1, 0, 1);
             this.tblPnlExcel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tblPnlExcel.Location = new System.Drawing.Point(0, 0);
+            this.tblPnlExcel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tblPnlExcel.Name = "tblPnlExcel";
             this.tblPnlExcel.RowCount = 3;
-            this.tblPnlExcel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tblPnlExcel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
-            this.tblPnlExcel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 609F));
-            this.tblPnlExcel.Size = new System.Drawing.Size(1440, 714);
+            this.tblPnlExcel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 67F));
+            this.tblPnlExcel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tblPnlExcel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 812F));
+            this.tblPnlExcel.Size = new System.Drawing.Size(1620, 952);
             this.tblPnlExcel.TabIndex = 2;
             // 
             // pnlExcellContoller
             // 
+            this.pnlExcellContoller.Controls.Add(this.btnPrint);
             this.pnlExcellContoller.Controls.Add(this.btnSaveAll);
             this.pnlExcellContoller.Controls.Add(this.cbxFIlePath);
             this.pnlExcellContoller.Controls.Add(this.btnOpenCaptuer);
@@ -106,14 +110,15 @@
             this.pnlExcellContoller.Location = new System.Drawing.Point(1, 1);
             this.pnlExcellContoller.Margin = new System.Windows.Forms.Padding(0);
             this.pnlExcellContoller.Name = "pnlExcellContoller";
-            this.pnlExcellContoller.Size = new System.Drawing.Size(1438, 50);
+            this.pnlExcellContoller.Size = new System.Drawing.Size(1618, 67);
             this.pnlExcellContoller.TabIndex = 2;
             // 
             // btnSaveAll
             // 
-            this.btnSaveAll.Location = new System.Drawing.Point(572, 15);
+            this.btnSaveAll.Location = new System.Drawing.Point(644, 20);
+            this.btnSaveAll.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSaveAll.Name = "btnSaveAll";
-            this.btnSaveAll.Size = new System.Drawing.Size(84, 25);
+            this.btnSaveAll.Size = new System.Drawing.Size(94, 33);
             this.btnSaveAll.TabIndex = 12;
             this.btnSaveAll.Text = "全部保存";
             this.btnSaveAll.UseVisualStyleBackColor = true;
@@ -123,20 +128,22 @@
             // 
             this.cbxFIlePath.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxFIlePath.FormattingEnabled = true;
-            this.cbxFIlePath.Location = new System.Drawing.Point(3, 15);
+            this.cbxFIlePath.Location = new System.Drawing.Point(3, 20);
+            this.cbxFIlePath.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbxFIlePath.Name = "cbxFIlePath";
-            this.cbxFIlePath.Size = new System.Drawing.Size(409, 23);
+            this.cbxFIlePath.Size = new System.Drawing.Size(460, 28);
             this.cbxFIlePath.TabIndex = 11;
             this.cbxFIlePath.SelectedIndexChanged += new System.EventHandler(this.cbxFIlePath_SelectedIndexChanged);
             // 
             // btnOpenCaptuer
             // 
             this.btnOpenCaptuer.BackColor = System.Drawing.Color.Violet;
-            this.btnOpenCaptuer.Font = new System.Drawing.Font("幼圆", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnOpenCaptuer.Font = new System.Drawing.Font("YouYuan", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnOpenCaptuer.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnOpenCaptuer.Location = new System.Drawing.Point(743, 2);
+            this.btnOpenCaptuer.Location = new System.Drawing.Point(923, 3);
+            this.btnOpenCaptuer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnOpenCaptuer.Name = "btnOpenCaptuer";
-            this.btnOpenCaptuer.Size = new System.Drawing.Size(120, 45);
+            this.btnOpenCaptuer.Size = new System.Drawing.Size(135, 60);
             this.btnOpenCaptuer.TabIndex = 10;
             this.btnOpenCaptuer.Text = "来，拍个照";
             this.btnOpenCaptuer.UseVisualStyleBackColor = false;
@@ -144,18 +151,20 @@
             // 
             // btnSaveAs
             // 
-            this.btnSaveAs.Location = new System.Drawing.Point(662, 15);
+            this.btnSaveAs.Location = new System.Drawing.Point(745, 20);
+            this.btnSaveAs.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSaveAs.Name = "btnSaveAs";
-            this.btnSaveAs.Size = new System.Drawing.Size(71, 25);
+            this.btnSaveAs.Size = new System.Drawing.Size(80, 33);
             this.btnSaveAs.TabIndex = 9;
             this.btnSaveAs.Text = "另存";
             this.btnSaveAs.UseVisualStyleBackColor = true;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(495, 15);
+            this.btnSave.Location = new System.Drawing.Point(557, 20);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(71, 25);
+            this.btnSave.Size = new System.Drawing.Size(80, 33);
             this.btnSave.TabIndex = 8;
             this.btnSave.Text = "保存";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -163,9 +172,10 @@
             // 
             // btnOpenExcelFile
             // 
-            this.btnOpenExcelFile.Location = new System.Drawing.Point(418, 15);
+            this.btnOpenExcelFile.Location = new System.Drawing.Point(470, 20);
+            this.btnOpenExcelFile.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnOpenExcelFile.Name = "btnOpenExcelFile";
-            this.btnOpenExcelFile.Size = new System.Drawing.Size(71, 25);
+            this.btnOpenExcelFile.Size = new System.Drawing.Size(80, 33);
             this.btnOpenExcelFile.TabIndex = 7;
             this.btnOpenExcelFile.Text = "打开";
             this.btnOpenExcelFile.UseVisualStyleBackColor = true;
@@ -179,16 +189,18 @@
             this.panel1.Controls.Add(this.btnChoosePicture);
             this.panel1.Controls.Add(this.btnSnapshot);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(4, 55);
+            this.panel1.Location = new System.Drawing.Point(4, 73);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1432, 39);
+            this.panel1.Size = new System.Drawing.Size(1612, 52);
             this.panel1.TabIndex = 3;
             // 
             // btnAddRow
             // 
-            this.btnAddRow.Location = new System.Drawing.Point(502, -1);
+            this.btnAddRow.Location = new System.Drawing.Point(565, -1);
+            this.btnAddRow.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAddRow.Name = "btnAddRow";
-            this.btnAddRow.Size = new System.Drawing.Size(80, 36);
+            this.btnAddRow.Size = new System.Drawing.Size(90, 48);
             this.btnAddRow.TabIndex = 14;
             this.btnAddRow.Text = "+";
             this.btnAddRow.UseVisualStyleBackColor = true;
@@ -196,9 +208,10 @@
             // 
             // btnCurrentDatetime
             // 
-            this.btnCurrentDatetime.Location = new System.Drawing.Point(338, -1);
+            this.btnCurrentDatetime.Location = new System.Drawing.Point(380, -1);
+            this.btnCurrentDatetime.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCurrentDatetime.Name = "btnCurrentDatetime";
-            this.btnCurrentDatetime.Size = new System.Drawing.Size(150, 36);
+            this.btnCurrentDatetime.Size = new System.Drawing.Size(169, 48);
             this.btnCurrentDatetime.TabIndex = 12;
             this.btnCurrentDatetime.Text = "置入当前时间";
             this.btnCurrentDatetime.UseVisualStyleBackColor = true;
@@ -206,9 +219,10 @@
             // 
             // btnRemoveRow
             // 
-            this.btnRemoveRow.Location = new System.Drawing.Point(580, -1);
+            this.btnRemoveRow.Location = new System.Drawing.Point(652, -1);
+            this.btnRemoveRow.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnRemoveRow.Name = "btnRemoveRow";
-            this.btnRemoveRow.Size = new System.Drawing.Size(80, 36);
+            this.btnRemoveRow.Size = new System.Drawing.Size(90, 48);
             this.btnRemoveRow.TabIndex = 13;
             this.btnRemoveRow.Text = "-";
             this.btnRemoveRow.UseVisualStyleBackColor = true;
@@ -216,9 +230,10 @@
             // 
             // btnChoosePicture
             // 
-            this.btnChoosePicture.Location = new System.Drawing.Point(169, -1);
+            this.btnChoosePicture.Location = new System.Drawing.Point(190, -1);
+            this.btnChoosePicture.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnChoosePicture.Name = "btnChoosePicture";
-            this.btnChoosePicture.Size = new System.Drawing.Size(170, 36);
+            this.btnChoosePicture.Size = new System.Drawing.Size(191, 48);
             this.btnChoosePicture.TabIndex = 11;
             this.btnChoosePicture.Text = "选择图片置入单元格";
             this.btnChoosePicture.UseVisualStyleBackColor = true;
@@ -227,19 +242,36 @@
             // btnSnapshot
             // 
             this.btnSnapshot.Location = new System.Drawing.Point(0, -1);
+            this.btnSnapshot.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSnapshot.Name = "btnSnapshot";
-            this.btnSnapshot.Size = new System.Drawing.Size(170, 36);
+            this.btnSnapshot.Size = new System.Drawing.Size(191, 48);
             this.btnSnapshot.TabIndex = 10;
             this.btnSnapshot.Text = "拍照置入单元格";
             this.btnSnapshot.UseVisualStyleBackColor = true;
             this.btnSnapshot.Click += new System.EventHandler(this.btnSnapshot_Click);
             // 
+            // btnPrint
+            // 
+            this.btnPrint.BackColor = System.Drawing.Color.SlateBlue;
+            this.btnPrint.Font = new System.Drawing.Font("YouYuan", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnPrint.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnPrint.Location = new System.Drawing.Point(843, 3);
+            this.btnPrint.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(74, 59);
+            this.btnPrint.TabIndex = 13;
+            this.btnPrint.Text = "打印";
+            this.btnPrint.UseVisualStyleBackColor = false;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
             // ExcelPadFrom
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1440, 714);
+            this.ClientSize = new System.Drawing.Size(1620, 952);
             this.Controls.Add(this.tblPnlExcel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ExcelPadFrom";
             this.Text = "ExcelPad";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ExcelPadFrom_FormClosing);
@@ -272,5 +304,6 @@
         private System.Windows.Forms.Button btnOpenCaptuer;
         private System.Windows.Forms.ComboBox cbxFIlePath;
         private System.Windows.Forms.Button btnSaveAll;
+        private System.Windows.Forms.Button btnPrint;
     }
 }

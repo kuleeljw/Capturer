@@ -10,7 +10,7 @@ namespace Capturer
 {
     public class AdvanceTabControl : TabControl
     {
-        private const int CLOSE_SIZE = 10;
+        private const int CLOSE_SIZE = 15;
 
         public event EventHandler TabPagePreClosing;
 
@@ -18,6 +18,8 @@ namespace Capturer
             : base()
         {
             this.DrawMode = TabDrawMode.OwnerDrawFixed;
+            this.SizeMode = TabSizeMode.Normal;
+            this.Padding =new Point(15,5);
         }
 
         protected override void OnDrawItem(DrawItemEventArgs e)
@@ -36,7 +38,7 @@ namespace Capturer
             //再画一个矩形框  
             using (Pen p = new Pen(Color.White))
             {
-                r.Offset(r.Width - CLOSE_SIZE, 0);
+                r.Offset(r.Width - CLOSE_SIZE, 3);
                 r.Width = CLOSE_SIZE;
                 r.Height = CLOSE_SIZE;
                 g.DrawRectangle(p, r);

@@ -55,7 +55,6 @@ namespace Capturer
         {
             if (this._currentExcelProcessor == null || string.IsNullOrEmpty(this._currentExcelProcessor.FilePath))
             {
-                MessageBox.Show("请先打开一个Excel文件");
                 return;
             }
 
@@ -141,7 +140,7 @@ namespace Capturer
 
         private void btnChoosePicture_Click(object sender, EventArgs e)
         {
-            if (_currentDataGridView.CurrentCell == null)
+            if (_currentDataGridView?.CurrentCell == null)
             {
                 MessageBox.Show("请先选择一个单元格");
                 return;
@@ -210,7 +209,7 @@ namespace Capturer
 
         private void btnSnapshot_Click(object sender, EventArgs e)
         {
-            if (_currentDataGridView.CurrentCell == null)
+            if (_currentDataGridView?.CurrentCell == null)
             {
                 MessageBox.Show("请先选择一个单元格");
                 return;
@@ -226,9 +225,16 @@ namespace Capturer
             }
         }
 
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            if (this._currentDataGridView == null) return;
+
+            PrintDGV.Print_DataGridView(this._currentDataGridView);
+        }
+
         private void btnAddRow_Click(object sender, EventArgs e)
         {
-            if (_currentDataGridView.Columns == null || _currentDataGridView.Columns.Count < 1)
+            if (_currentDataGridView?.Columns == null || _currentDataGridView.Columns.Count < 1)
             {
                 MessageBox.Show("请先打开一个Excel文件");
                 return;
@@ -279,7 +285,7 @@ namespace Capturer
 
         private void btnCurrentDatetime_Click(object sender, EventArgs e)
         {
-            if (_currentDataGridView.CurrentCell == null)
+            if (_currentDataGridView?.CurrentCell == null)
             {
                 MessageBox.Show("请先选择一个单元格");
                 return;
@@ -334,7 +340,12 @@ namespace Capturer
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_tabControl1.SelectedTab == null) return;
+            if (_tabControl1.SelectedTab == null)
+            {
+                this._currentDataGridView = null;
+                this._currentExcelProcessor = null;
+                return;
+            }
 
             TabPageTag tag = _tabControl1.SelectedTab.Tag as TabPageTag;
             cbxFIlePath.SelectedItem = tag.FileName;
@@ -372,7 +383,7 @@ namespace Capturer
         private void SetUnSaved()
         {
             TabPageTag tag = _tabControl1.SelectedTab.Tag as TabPageTag;
-            _tabControl1.SelectedTab.Text = $"{Path.GetFileNameWithoutExtension(tag.FileName)} *";
+            _tabControl1.SelectedTab.Text = $"{Path.GetFileNameWithoutExtension(tag.FileName)}*";
             tag.UnSaved = true;
         }
 
@@ -546,5 +557,6 @@ namespace Capturer
 
             excelProcessor.Save();
         }
+
     }
 }
