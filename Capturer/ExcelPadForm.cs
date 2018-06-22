@@ -392,10 +392,9 @@ namespace Capturer
             TabPage result = null;
             foreach (TabPage page in _tabControl1.TabPages)
             {
-                dynamic tag = page.Tag;
+                TabPageTag tag = page.Tag  as TabPageTag;
                 if (tag.FileName == fileName)
                 {
-<<<<<<< HEAD
                     result = page;
                     break;
                 }
@@ -403,24 +402,6 @@ namespace Capturer
 
             return result;
         }
-=======
-                    foreach (object item in data[0])
-                    {
-                        string text = item == null ? string.Empty : item.ToString();
-                        if (ConfigurationManager.AppSettings["imageColumnsName"].Split('|').Contains(text))
-                        {
-                            DataGridViewImageColumn col = new DataGridViewImageColumn();
-                            col.Name = text;
-                            col.HeaderText = text;
-                            col.Width = 132;
-                            dataGridView1.Columns.Add(col);
-                        }
-                        else
-                        {
-                            dataGridView1.Columns.Add(text, text);
-                        }
-                    }
->>>>>>> 72b976c86e6b45788b36dc0c9ef27ef186253ea3
 
         private void GetExcelData(string fileName)
         {
