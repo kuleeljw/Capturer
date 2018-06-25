@@ -29,157 +29,130 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CapturerForm));
-            this.tblPnlCapturer = new System.Windows.Forms.TableLayoutPanel();
-            this.pnlCapturerController = new System.Windows.Forms.Panel();
             this.btnBeginOrCancel = new System.Windows.Forms.Button();
             this.cbxChooseResolution = new System.Windows.Forms.ComboBox();
             this.lblChooseResolution = new System.Windows.Forms.Label();
             this.cbxChooseDevice = new System.Windows.Forms.ComboBox();
-            this.lblChooseDevice = new System.Windows.Forms.Label();
-            this.pnlCapturer = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.videoSourcePlayer1 = new AForge.Controls.VideoSourcePlayer();
-            this.tblPnlCapturer.SuspendLayout();
-            this.pnlCapturerController.SuspendLayout();
-            this.pnlCapturer.SuspendLayout();
+            this.lblChooseDevice = new System.Windows.Forms.Label();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // tblPnlCapturer
-            // 
-            this.tblPnlCapturer.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tblPnlCapturer.ColumnCount = 1;
-            this.tblPnlCapturer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblPnlCapturer.Controls.Add(this.pnlCapturerController, 0, 0);
-            this.tblPnlCapturer.Controls.Add(this.pnlCapturer, 0, 1);
-            this.tblPnlCapturer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tblPnlCapturer.Location = new System.Drawing.Point(0, 0);
-            this.tblPnlCapturer.Margin = new System.Windows.Forms.Padding(0);
-            this.tblPnlCapturer.Name = "tblPnlCapturer";
-            this.tblPnlCapturer.RowCount = 2;
-            this.tblPnlCapturer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 107F));
-            this.tblPnlCapturer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblPnlCapturer.Size = new System.Drawing.Size(585, 501);
-            this.tblPnlCapturer.TabIndex = 1;
-            // 
-            // pnlCapturerController
-            // 
-            this.pnlCapturerController.Controls.Add(this.btnBeginOrCancel);
-            this.pnlCapturerController.Controls.Add(this.cbxChooseResolution);
-            this.pnlCapturerController.Controls.Add(this.lblChooseResolution);
-            this.pnlCapturerController.Controls.Add(this.cbxChooseDevice);
-            this.pnlCapturerController.Controls.Add(this.lblChooseDevice);
-            this.pnlCapturerController.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlCapturerController.Location = new System.Drawing.Point(1, 1);
-            this.pnlCapturerController.Margin = new System.Windows.Forms.Padding(0);
-            this.pnlCapturerController.Name = "pnlCapturerController";
-            this.pnlCapturerController.Size = new System.Drawing.Size(583, 107);
-            this.pnlCapturerController.TabIndex = 0;
             // 
             // btnBeginOrCancel
             // 
-            this.btnBeginOrCancel.Location = new System.Drawing.Point(460, 23);
-            this.btnBeginOrCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnBeginOrCancel.Location = new System.Drawing.Point(571, 3);
             this.btnBeginOrCancel.Name = "btnBeginOrCancel";
-            this.btnBeginOrCancel.Size = new System.Drawing.Size(99, 64);
-            this.btnBeginOrCancel.TabIndex = 4;
-            this.btnBeginOrCancel.Text = "打开摄像头";
+            this.btnBeginOrCancel.Size = new System.Drawing.Size(55, 28);
+            this.btnBeginOrCancel.TabIndex = 10;
+            this.btnBeginOrCancel.Text = "打开";
             this.btnBeginOrCancel.UseVisualStyleBackColor = true;
             this.btnBeginOrCancel.Click += new System.EventHandler(this.btnBeginOrCancel_Click);
             // 
             // cbxChooseResolution
             // 
             this.cbxChooseResolution.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxChooseResolution.Location = new System.Drawing.Point(125, 65);
-            this.cbxChooseResolution.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cbxChooseResolution.Location = new System.Drawing.Point(372, 6);
             this.cbxChooseResolution.Name = "cbxChooseResolution";
-            this.cbxChooseResolution.Size = new System.Drawing.Size(313, 28);
-            this.cbxChooseResolution.TabIndex = 3;
-            this.cbxChooseResolution.SelectedIndexChanged += new System.EventHandler(this.cbxChooseResolution_SelectedIndexChanged);
+            this.cbxChooseResolution.Size = new System.Drawing.Size(193, 23);
+            this.cbxChooseResolution.TabIndex = 9;
+            this.cbxChooseResolution.SelectedValueChanged += new System.EventHandler(this.cbxChooseResolution_SelectedIndexChanged);
             // 
             // lblChooseResolution
             // 
             this.lblChooseResolution.AutoSize = true;
-            this.lblChooseResolution.Location = new System.Drawing.Point(10, 63);
+            this.lblChooseResolution.Location = new System.Drawing.Point(299, 9);
             this.lblChooseResolution.Name = "lblChooseResolution";
-            this.lblChooseResolution.Size = new System.Drawing.Size(105, 20);
-            this.lblChooseResolution.TabIndex = 2;
-            this.lblChooseResolution.Text = "选择分辨率：";
+            this.lblChooseResolution.Size = new System.Drawing.Size(67, 15);
+            this.lblChooseResolution.TabIndex = 8;
+            this.lblChooseResolution.Text = "分辨率：";
             // 
             // cbxChooseDevice
             // 
             this.cbxChooseDevice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxChooseDevice.Location = new System.Drawing.Point(125, 21);
-            this.cbxChooseDevice.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cbxChooseDevice.Location = new System.Drawing.Point(61, 6);
             this.cbxChooseDevice.Name = "cbxChooseDevice";
-            this.cbxChooseDevice.Size = new System.Drawing.Size(313, 28);
-            this.cbxChooseDevice.TabIndex = 1;
-            this.cbxChooseDevice.SelectedIndexChanged += new System.EventHandler(this.cbxChooseDevice_SelectedIndexChanged);
+            this.cbxChooseDevice.Size = new System.Drawing.Size(224, 23);
+            this.cbxChooseDevice.TabIndex = 7;
+            this.cbxChooseDevice.SelectedValueChanged += new System.EventHandler(this.cbxChooseDevice_SelectedIndexChanged);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.lblChooseDevice);
+            this.panel1.Controls.Add(this.btnBeginOrCancel);
+            this.panel1.Controls.Add(this.cbxChooseDevice);
+            this.panel1.Controls.Add(this.cbxChooseResolution);
+            this.panel1.Controls.Add(this.lblChooseResolution);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(640, 38);
+            this.panel1.TabIndex = 11;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.videoSourcePlayer1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 38);
+            this.panel2.Margin = new System.Windows.Forms.Padding(0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(640, 480);
+            this.panel2.TabIndex = 12;
+            // 
+            // videoSourcePlayer1
+            // 
+            this.videoSourcePlayer1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.videoSourcePlayer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.videoSourcePlayer1.Location = new System.Drawing.Point(0, 0);
+            this.videoSourcePlayer1.Margin = new System.Windows.Forms.Padding(0);
+            this.videoSourcePlayer1.Name = "videoSourcePlayer1";
+            this.videoSourcePlayer1.Size = new System.Drawing.Size(640, 480);
+            this.videoSourcePlayer1.TabIndex = 8;
+            this.videoSourcePlayer1.Text = "videoSourcePlayer1";
+            this.videoSourcePlayer1.VideoSource = null;
             // 
             // lblChooseDevice
             // 
             this.lblChooseDevice.AutoSize = true;
-            this.lblChooseDevice.Location = new System.Drawing.Point(26, 25);
+            this.lblChooseDevice.Location = new System.Drawing.Point(3, 10);
             this.lblChooseDevice.Name = "lblChooseDevice";
-            this.lblChooseDevice.Size = new System.Drawing.Size(89, 20);
-            this.lblChooseDevice.TabIndex = 0;
-            this.lblChooseDevice.Text = "选择设备：";
-            // 
-            // pnlCapturer
-            // 
-            this.pnlCapturer.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.pnlCapturer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pnlCapturer.Controls.Add(this.videoSourcePlayer1);
-            this.pnlCapturer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlCapturer.Location = new System.Drawing.Point(1, 109);
-            this.pnlCapturer.Margin = new System.Windows.Forms.Padding(0);
-            this.pnlCapturer.Name = "pnlCapturer";
-            this.pnlCapturer.Size = new System.Drawing.Size(583, 391);
-            this.pnlCapturer.TabIndex = 1;
-            // 
-            // videoSourcePlayer1
-            // 
-            this.videoSourcePlayer1.AutoSizeControl = true;
-            this.videoSourcePlayer1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.videoSourcePlayer1.Location = new System.Drawing.Point(128, 72);
-            this.videoSourcePlayer1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.videoSourcePlayer1.Name = "videoSourcePlayer1";
-            this.videoSourcePlayer1.Size = new System.Drawing.Size(322, 242);
-            this.videoSourcePlayer1.TabIndex = 0;
-            this.videoSourcePlayer1.Text = "videoSourcePlayer1";
-            this.videoSourcePlayer1.VideoSource = null;
+            this.lblChooseDevice.Size = new System.Drawing.Size(52, 15);
+            this.lblChooseDevice.TabIndex = 5;
+            this.lblChooseDevice.Text = "设备：";
             // 
             // CapturerForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(585, 501);
-            this.Controls.Add(this.tblPnlCapturer);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.ClientSize = new System.Drawing.Size(640, 518);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "CapturerForm";
             this.Text = "Capturer";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Capturer_FormClosed);
             this.Load += new System.EventHandler(this.Capturer_Load);
-            this.tblPnlCapturer.ResumeLayout(false);
-            this.pnlCapturerController.ResumeLayout(false);
-            this.pnlCapturerController.PerformLayout();
-            this.pnlCapturer.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel tblPnlCapturer;
-        private System.Windows.Forms.Panel pnlCapturerController;
         private System.Windows.Forms.Button btnBeginOrCancel;
         private System.Windows.Forms.ComboBox cbxChooseResolution;
         private System.Windows.Forms.Label lblChooseResolution;
         private System.Windows.Forms.ComboBox cbxChooseDevice;
-        private System.Windows.Forms.Label lblChooseDevice;
-        private System.Windows.Forms.Panel pnlCapturer;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
         internal AForge.Controls.VideoSourcePlayer videoSourcePlayer1;
+        private System.Windows.Forms.Label lblChooseDevice;
     }
 }

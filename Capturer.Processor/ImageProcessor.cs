@@ -21,6 +21,28 @@ namespace Capturer.Processor
         /// 调整图片大小
         /// </summary>
         /// <param name="image"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <returns></returns>
+        public Image ResizeImage(Image image, int width, int height)
+        {
+            double wRate = (double)width / (double)image.Width;
+            double hRate = (double)height / (double)image.Height;
+
+            if (wRate < hRate)
+            {
+                return this.ResizeImage(image, wRate);
+            }
+            else
+            {
+                return this.ResizeImage(image, hRate);
+            }
+        }
+
+        /// <summary>
+        /// 调整图片大小
+        /// </summary>
+        /// <param name="image"></param>
         /// <param name="scale">按比例调整</param>
         /// <returns></returns>
         public Image ResizeImage(Image image, double scale)

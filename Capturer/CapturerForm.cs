@@ -26,7 +26,7 @@ namespace Capturer
         {
             this.cbxChooseDevice.Items.AddRange(this._videoCapturerProcessor.DeviceNames);
             this.cbxChooseDevice.SelectedIndex = 0;
-            if(this._videoCapturerProcessor.DeviceCount < 1)
+            if (this._videoCapturerProcessor.DeviceCount < 1)
             {
                 btnBeginOrCancel.Enabled = false;
             }
@@ -82,10 +82,12 @@ namespace Capturer
         {
             Button btn = sender as Button;
 
-            if (btn.Text == "打开摄像头")
+            if (btn.Text == "打开")
             {
                 btn.Enabled = false;
                 this.EnableController(false);
+
+                this.CalcPlayerWidthAndHeight();
 
                 try
                 {
@@ -98,7 +100,7 @@ namespace Capturer
                     this.CloseVideo();
                 }
 
-                btn.Text = "关闭摄像头";
+                btn.Text = "关闭";
                 btn.Enabled = true;
             }
             else
@@ -107,7 +109,7 @@ namespace Capturer
 
                 this.CloseVideo();
 
-                btn.Text = "打开摄像头";
+                btn.Text = "打开";
                 btn.Enabled = true;
                 this.EnableController(true);
             }
@@ -129,5 +131,21 @@ namespace Capturer
             cbxChooseResolution.Enabled = enable;
         }
 
+        private void CalcPlayerWidthAndHeight()
+        {
+            if (this.cbxChooseResolution == null || this.cbxChooseResolution.SelectedItem == null) return;
+
+            string[] arr = this.cbxChooseResolution.SelectedItem.ToString().Split('x');
+            if (arr == null || arr.Length < 2) return;
+
+            double width = double.Parse(arr[0].Trim());
+            double height = double.Parse(arr[1].Trim());
+            double widthHeightRate = width / height;
+
+            if (widthHeightRate == (double)this.videoSourcePlayer1.Width / (double)this.videoSourcePlayer1.Height) return;
+
+            int targetWidth = (int)(this.videoSourcePlayer1.Height * widthHeightRate);
+            this.Size = new Size(this.Size.Width + (targetWidth - this.Size.Width) + 16, this.Size.Height);
+        }
     }
 }
